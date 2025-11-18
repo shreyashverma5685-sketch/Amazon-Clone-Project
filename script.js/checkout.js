@@ -1,6 +1,10 @@
 import {cart, removeFromCart} from '../data/cart.js';
 import { products } from '../data/products.js';
 import {formatCurrency} from './utils/money.js'; /* Generally it is for the place value after the decimals in the cart page */
+// Do minf here that for import or export we are using here the ESM(EcmaScript) version of js which comes wiith the export onto the website itself
+
+
+
 
 let cartSummaryHTML = '';
 
