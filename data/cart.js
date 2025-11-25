@@ -51,3 +51,18 @@ export function removeFromCart (productId){
 
   saveToStorage();
 }
+
+// makinng the delivery option interactive by change the days as being selected
+
+export function updateDeliveryOption(productId, deliveryOptionId){
+  let matchingItem;
+
+  cart.forEach((cartItem) => {
+    if (productId === cartItem.productId){
+      matchingItem = cartItem ;
+    }
+  });
+  matchingItem.deliveryOptionId = deliveryOptionId;
+
+  saveToStorage();
+}
