@@ -1,9 +1,10 @@
 import {cart, removeFromCart, updateDeliveryOption} from '../../data/cart.js';
-import { products , getProduct} from '../../data/products.js';
+import {products, getProduct} from '../../data/products.js';
 import {formatCurrency} from '../utils/money.js'; /* Generally it is for the place value after the decimals in the cart page */
 // Do mind here that for import or export we are using here the ESM(EcmaScript) version of js which comes wiith the export onto the website itself
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js'; /* Here is the Esm wali chieez */
 import {deliveryOptions , getDeliveryOption} from '../../data/deliveryOptions.js';
+import {renderPaymentSummary} from './paymentSummary.js';
 
 /* These properties can be accessed by the documentaries of the individual libraries that you are exporting */
 // const today = dayjs();
@@ -148,6 +149,8 @@ export function renderOrderSummary(){
             const container = document.querySelector(`.js-cart-item-container-${productId}`);
                 // console.log(container);
                 container.remove();
+
+                renderPaymentSummary();
             });
         });
 
@@ -160,6 +163,7 @@ export function renderOrderSummary(){
                 const {productId , deliveryOptionId} = element.dataset;
                 updateDeliveryOption(productId , deliveryOptionId); 
                 renderOrderSummary();
+                renderPaymentSummary();
             });
         });
 
